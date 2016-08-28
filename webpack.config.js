@@ -3,34 +3,10 @@ var path = require('path');
 
 var config = {
     entry: {
-        'polyfills': './src/polyfills.browser.ts',
-        'vendor': './src/vendor.browser.ts',
-        'main': './src/main.browser.ts',
+        'main': './src/main.browser.ts'
     },
 
     devServer: {
-        proxy: [{
-            path: '/login',
-            target: 'http://localhost:3001'
-        },
-        {
-            path: '/mz/p/v1/states',
-            target: 'http://localhost:3001'
-        },
-        {
-            path: '/logout',
-            target: 'http://localhost:3001'
-        }, {
-            path: '/mz/r/v1/oam/accountManagement/loggedUsers',
-            target: 'http://localhost:3001'
-        }, {
-            path: '/mz/r/v1/oam/accountManagement/keepAliveUser',
-            target: 'http://localhost:3001'
-        },
-        {
-            path: '/mz/p/v1/pbts/1',
-            target: 'http://localhost:3001'
-        }],
     },
 
     output: {
@@ -40,21 +16,8 @@ var config = {
     },
     module: {
         loaders: [{
-          test: /\.svg$/,
-          loader: 'svg-sprite?' + JSON.stringify({
-            name: '[name]',
-            angularBaseWorkaround:true,
-            prefixize: true
-          })
-        },{
-            test: /\.ts$/,
-            loaders: ['awesome-typescript-loader', 'angular2-template-loader']
-        }, {
             test: /\.css$/,
             loaders: ['style-loader', 'css-loader', 'postcss-loader']
-        }, {
-            test: /\.scss$/,
-            loaders: ['to-string', 'css-loader', 'postcss-loader', 'sass-loader']
         }, {
             test: /\.html$/,
             loader: 'html-loader'
@@ -72,32 +35,18 @@ var config = {
             loader: 'url?limit=1000000'
         }]
     },
-    sassLoader: {
-        includePaths: [
-            path.resolve(__dirname, './node_modules/compass-mixins/lib'),
-            path.resolve('./src/scss')
-        ]
-    },
-    postcss: function() {
-        return [require('autoprefixer')];
-    },
     htmlLoader: {
         root: path.resolve(__dirname, './src/assets')
     },
     resolve: {
-        extensions: ['', '.ts', '.js', '.scss'],
+        extensions: ['', '.js'],
         moduleDirectories: ['node_modules'],
         root: path.resolve('./src')
     },
     devtool: 'cheap-module-source-map',
     cache: true,
     debug: true,
-    plugins: [
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {warnings: false},
-        //     mangle: false
-        // })
-    ]
+    plugins: []
 };
 
 module.exports = config;
