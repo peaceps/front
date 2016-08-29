@@ -16,6 +16,14 @@ var config = {
     },
     module: {
         loaders: [{
+          test: /\.js?$/,
+          loaders: ['babel'],
+          exclude: /node_modules/
+        }, {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+        }, {
             test: /\.css$/,
             loaders: ['style-loader', 'css-loader', 'postcss-loader']
         }, {

@@ -15,7 +15,7 @@ function cp(id){
 function run(gen){
   let g = gen();
 
-  function next(data?:any){
+  function next(data){
     let result = g.next(data);
     if(result.done){
       return result.value;
