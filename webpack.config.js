@@ -3,7 +3,7 @@ var path = require('path');
 
 var config = {
     entry: {
-        'main': './src/main.browser.ts'
+        'main': './src/main.js'
     },
 
     devServer: {
