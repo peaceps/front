@@ -7,8 +7,11 @@ var config = {
     },
 
     devServer: {
+        // proxy: [{
+        //     path: 'http://www.baidu.com',
+        //     target: 'http://www.baidu.com'
+        // }],
     },
-
     output: {
         filename: '[name].bundle.js',
         sourceMapFilename: '[name].map',
