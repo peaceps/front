@@ -2,7 +2,7 @@ import Rx from "rxjs";
 
 function get(url) {
     return Rx.Observable.create(observer => {
-        var req = new XMLHttpRequest();
+        let req = new XMLHttpRequest();
         req.open('GET', url);
         req.onload = function() {
             if (req.status == 200) {
@@ -18,8 +18,6 @@ function get(url) {
     });
 }
 
-export var rxMain = () => {
-    console.log('before');
-    get('/app/js/rx.js').subscribe(x => console.log(x));
-    console.log('after');
+export let rxMain = () => {
+    get("/app/js/rx.js").subscribe(data => console.log(data));
 }
